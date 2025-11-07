@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Organizer",
+  "version": "1.0.0",
+  "description": "AI-powered tab organization",
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "storage",
+    "alarms",
+    "history",
+    "scripting" 
+  ],
+  "host_permissions": [
+    "https://api.anthropic.com/*" 
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/content-script.js"] 
+    }
+  ],
+  "icons": {
+    "16": "public/icons/icon16.png",
+    "48": "public/icons/icon48.png",
+    "128": "public/icons/icon128.png"
+  }
+}
